@@ -13,5 +13,5 @@ def main():
             print 'Query invalid or server unreachable!'
             
 if __name__ == '__main__':
-    db = MySql.Database("localhost", "pythondb", "pythonbot", "1bot23")
+    db = MySql.Database("localhost", "pythondb", "pythonUser", "pythondb")
     main()

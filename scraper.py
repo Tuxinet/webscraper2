@@ -15,12 +15,16 @@ class myOpener(FancyURLopener, object):
 
 
 class Scraper():
-    def __init__(self):
-        self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.s.settimeout(3600)
-        self.s.connect(("localhost", 1337))
+    def __init__(self, url, urlLimit, delay):
+        #self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        #self.s.settimeout(3600)
+        #self.s.connect(("localhost", 1337))
+
+        self.sleeptime = delay
+        self.limit = urlLimit
+        self.url = url
         
-        self.db = MySql.Database()
+        self.db = MySql.Database("127.0.0.1", "pythondb", "pythonUser", "pythondb")
 
         self.filename = self.url
         
@@ -68,8 +72,8 @@ class Scraper():
                         if self.counter < self.limit:
                             self.urls.append(tag['href'])
                 
-                print len(self.urls)
-                print self.counter
+                print "Urls left: " + len(self.urls)
+                print "Urls found: " + self.counter
 
             except:
                 print "Error, something went wrong!"

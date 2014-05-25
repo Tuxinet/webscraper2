@@ -21,6 +21,7 @@ class DatabaseHandler:
 
         
     def idle(self):
+        pass
         
 
     def addToDB(self, url):
